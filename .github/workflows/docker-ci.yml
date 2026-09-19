@@ -52,3 +52,21 @@ jobs:
           context: .
           push: true
           tags: vidushashalani/csi2113-devops:latest
+
+  deploy:
+    name: Deploy to Local Computer
+    needs: docker
+    runs-on: [self-hosted, Windows, X64]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Pull latest Docker image
+        run: docker pull vidushashalani/csi2113-devops:latest
+
+      - name: Deploy application
+        run: docker compose up -d --no-build
+
+      - name: Verify running container
+        run: docker ps
