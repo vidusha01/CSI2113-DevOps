@@ -1,6 +1,6 @@
 services:
   web:
-    build: .
+    image: vidushashalani/csi2113-devops:latest
     container_name: csi2113-devops-container
     ports:
       - "8080:8080"
